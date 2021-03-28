@@ -1,20 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import BlogList from './blogList'
+
 const Home = () => {
-  const [name, setName] = useState('Ala2')
-  const [age, setAge] = useState(24)
-
-  const onclickHandler = () => {
-    setName("Aseel");
-    setAge(20);
-  }
-
+  const [Blogs, setBlogs] = useState(null)
+  const [isPending, setIsPending] = useState(true)
+  useEffect(() => {
+    fetch('http://localhost:8000/blogs')
+      .then(res => {
+        return res.json()
+      })
+        .then(data => {
+          console.log(data)
+          setBlogs(data)
+          setIsPending(false)
+        })
+  }, [])
   return ( 
     <div className="home">
-      <h2>Here is your Home page</h2>
-      <p>{name} is {age} years old!</p>
-      <button onClick={() => onclickHandler()}>
-        Click!
-      </button>
+      {isPending ? <p>Please wait for data to arrive!</p>: <BlogList  blogs={Blogs} title="All Blogs!"/>}
     </div>
    );
 }
