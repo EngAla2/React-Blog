@@ -1,24 +1,24 @@
-import NavBar from './component/navbar'
-import Home from './component/home'
-import Contact from './component/contact';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import BlogDetails from './component/blogDetails';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Contact from './component/contact';
+import Home from './component/home';
+import NavBar from './component/navbar';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar/>
+        <NavBar />
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Home/>
+              <Home />
             </Route>
             <Route exact path="/contact">
-              <Contact/>
+              <Contact />
             </Route>
             <Route exact path="/blogs/:id">
-              <BlogDetails/>
+              <BlogDetails />
             </Route>
           </Switch>
         </div>
