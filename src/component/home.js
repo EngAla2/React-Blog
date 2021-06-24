@@ -1,22 +1,15 @@
-import { useState } from 'react'
+// import { useState, useEffect } from 'react'
+import BlogList from './blogList'
+import useFetch from './useFetch';
+
 const Home = () => {
-  const [name, setName] = useState('Ala2')
-  const [age, setAge] = useState(24)
+  const { data: Blogs, isPending, error } = useFetch('http://localhost:8000/blogs')
 
-  const onclickHandler = () => {
-    setName("Aseel");
-    setAge(20);
-  }
-
-  return ( 
+  return (
     <div className="home">
-      <h2>Here is your Home page</h2>
-      <p>{name} is {age} years old!</p>
-      <button onClick={() => onclickHandler()}>
-        Click!
-      </button>
+      {error ? <p>{error}</p> : isPending ? <p>Please wait for data to arrive!</p> : <BlogList blogs={Blogs} title="All Blogs!" />}
     </div>
-   );
+  );
 }
- 
+
 export default Home;
