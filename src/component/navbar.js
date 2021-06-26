@@ -5,7 +5,6 @@ const NavBar = () => {
       <h1>Hello to my Blogs!</h1>
       <div className="links">
         <Link to="/">Home</Link>
-        <Link to="/about">about</Link>
         <Link to="/contact">contact</Link>
         <Link to="/create" style={{
           color: 'white',

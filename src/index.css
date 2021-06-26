@@ -115,3 +115,11 @@ h1 {
   max-width: 600px;
   margin: auto;
 }
+
+.contact h2, a {
+  color: #f1356d;
+  margin-bottom: 30px;
+}
+.contact a {
+  font-size: 20px;
+}
